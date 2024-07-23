@@ -16,12 +16,12 @@
                     <div class="text-center">
                         <!-- Current Profile Photo -->
                         <div class="mt-2" x-show="! photoPreview">
-                            <img wire:model="image" alt="" class="w-40 h-40 m-auto rounded-full shadow">
+                            <img wire:model="image" alt="" class="w-40 bg-white h-40 m-auto rounded-full shadow">
                         </div>
 
                         <!-- New Profile Photo Preview -->
                         <div class="mt-2" x-show="photoPreview" style="display: none;">
-                            <span class="block w-40 h-40 rounded-full m-auto shadow"
+                            <span class="block w-40 h-40 rounded-full m-auto shadow bg-white"
                                 x-bind:style="'background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url(\'' +
                                 photoPreview + '\');'"
                                 style="background-size: cover; background-repeat: no-repeat; background-position: center center; background-image: url('null');">

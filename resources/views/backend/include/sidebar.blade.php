@@ -60,7 +60,7 @@
                         <a href="{{ route('users') }}">Users</a>
                     </li>
                     <li>
-                        <a href="">System Information</a>
+                        <a href="{{ route('systemInformation') }}">System Information</a>
                     </li>
                 </ul>
             </li>

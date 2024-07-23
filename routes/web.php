@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth\AdminController;
 use App\Http\Controllers\dashboard\DashboardController;
+use App\Http\Controllers\dashboard\SystemInformationController;
 use App\Http\Controllers\ErrorRedirectController;
 use App\Http\Controllers\frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,9 @@ Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
 
     //Admin Profile
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
+
+    //System Information
+    Route::get('/system-information', [SystemInformationController::class, 'systemInformation'])->name('systemInformation');
 });
 
 
