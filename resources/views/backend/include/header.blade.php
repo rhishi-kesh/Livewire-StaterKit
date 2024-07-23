@@ -14,7 +14,6 @@
                 </a>
             </div>
             <div
-                x-data="header"
                 class="flex items-center space-x-1.5 ml-auto dark:text-[#d0d2d6] sm:flex-1 sm:ml-0 lg:space-x-2"
             >
                 <div class="sm:mr-auto" x-data="{ search: false }" @click.outside="search = false">
@@ -73,7 +72,7 @@
                     </button>
                 </div>
                 <div>
-                    <a href="" target="_blank" class="uppercase btn md:bg-blue-500 bg-transparent border-none dark:text-[#b0b2b6] text-[#5a5b5e] md:text-white dark:md:text-white cursor-pointer px-3 pr-1 md:pr-3">
+                    <a href="{{ route('register') }}" class="uppercase btn md:bg-blue-500 bg-transparent border-none dark:text-[#b0b2b6] text-[#5a5b5e] md:text-white dark:md:text-white cursor-pointer px-3 pr-1 md:pr-3">
                         <svg  xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round" class="icon icon-tabler icon-tabler-world inline mb-0 md:mb-1" width="20" height="20"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M16 19h6" /><path d="M19 16v6" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /></svg>
                         <span class="hidden md:inline-block ms-1">
                             Add User
@@ -161,12 +160,13 @@
                 </div>
                 <div class="dropdown flex-shrink-0" x-data="dropdown" @click.outside="open = false">
                     <a href="javascript:;" class="group relative" @click="toggle()">
-                        <span
-                            ><img
-                                class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100"
-                                src="{{ asset('dashboard/images/user-profile.jpeg') }}"
-                                alt="image"
-                        /></span>
+                        <span>
+                            @if(empty(auth()->user()->profile))
+                                <img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100 bg-white" src="{{ asset('profile.jpeg') }}" alt="image">
+                            @else
+                                <img class="h-9 w-9 rounded-full object-cover saturate-50 group-hover:saturate-100 bg-white" src="{{ asset('storage/' . auth()->user()->profile) }}" alt="image">
+                            @endif
+                        </span>
                     </a>
                     <ul
                         x-cloak
@@ -178,22 +178,24 @@
                         <li>
                             <div class="flex items-center px-4 py-4">
                                 <div class="flex-none">
-                                    <img class="h-10 w-10 rounded-md object-cover" src="{{ asset('dashboard/images/user-profile.jpeg') }}" alt="image" />
+                                    @if(empty(auth()->user()->profile))
+                                        <img class="h-10 w-10 rounded-md object-cover bg-white" src="{{ asset('profile.jpeg') }}" alt="image">
+                                    @else
+                                        <img class="h-10 w-10 rounded-md object-cover bg-white" src="{{ asset('storage/' . auth()->user()->profile) }}" alt="image">
+                                    @endif
                                 </div>
                                 <div class="truncate pl-4">
                                     <h4 class="text-base">
-                                        John Doe
+                                        {{ auth()->user()->name }}
                                     </h4>
-                                    <a
-                                        class="text-black/60 hover:text-primary dark:text-dark-light/60 dark:hover:text-white"
-                                        href="javascript:;"
-                                        >johndoe@gmail.com</a
-                                    >
+                                    <a class="text-black/60 hover:text-primary dark:text-white/60 dark:hover:text-white" href="javascript:;" >
+                                        {{ auth()->user()->email }}
+                                    </a>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="" class="dark:hover:text-white" @click="toggle">
+                            <a href="{{ route('profile') }}" class="dark:hover:text-white" @click="toggle">
                                 <svg
                                     class="h-4.5 w-4.5 shrink-0 mr-2"
                                     width="18"
@@ -214,7 +216,7 @@
                             >
                         </li>
                         <li class="border-t border-white-light dark:border-white-light/10">
-                            <a href="auth-boxed-signin.html" class="!py-3 text-danger" @click="toggle">
+                            <a href="{{ route('logout') }}" class="!py-3 text-danger" @click="toggle">
                                 <svg
                                     class="h-4.5 w-4.5 shrink-0 rotate-90 mr-2"
                                     width="18"

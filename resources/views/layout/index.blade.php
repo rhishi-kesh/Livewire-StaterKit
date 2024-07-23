@@ -46,7 +46,9 @@
                 <!-- end header section -->
 
                 <!-- start main content section -->
-                @yield('content')
+                <div class="animate__animated p-6 bg-gray-200 dark:bg-gray-950" :class="[$store.app.animation]">
+                    @yield('content')
+                </div>
                 <!-- end main content section -->
 
                 <!-- start footer section -->

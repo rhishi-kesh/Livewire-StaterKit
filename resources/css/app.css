@@ -57,7 +57,7 @@
         @apply text-white bg-orange-500;
     }
     th {
-        @apply text-blue-500 capitalize;
+        @apply text-blue-500 capitalize dark:text-white;
     }
 }
 

@@ -11,13 +11,26 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 
 //Admin Auth
 Route::get('/admin', [AdminController::class, 'adminLogin'])->name('adminLogin');
+Route::post('/login-post', [AdminController::class, 'loginPost'])->name('loginPost');
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 // Error Redirect
 Route::get('/404', [ErrorRedirectController::class, 'notFound'])->name('notFound');
 
 //Dashboard
-// Route::group(['middleware' => 'auth'], function () {
-    Route::get('/admin/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-// });
+Route::group(['prefix'=>'admin', 'middleware' => 'auth'], function () {
+
+    //Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
+    //Admin Register
+    Route::get('/register', [AdminController::class, 'register'])->name('register');
+
+    //Admin Register
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+
+    //Admin Profile
+    Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
+});
 
 

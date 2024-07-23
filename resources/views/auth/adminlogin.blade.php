@@ -20,11 +20,15 @@
                             <h1 class="text-3xl font-extrabold uppercase !leading-snug text-blue-500 md:text-4xl ">Sign in</h1>
                             <p class="text-base font-bold">Enter your email and password to sign in</p>
                         </div>
-                        <form class="space-y-5">
+                        @error('error')
+                            <div class="p-2 rounded bg-red-500 text-white">{{ ($message) }}</div>
+                        @enderror
+                        <form class="space-y-5" action="{{ route('loginPost') }}" method="POST">
+                            @csrf
                             <div>
                                 <label for="Email">Email</label>
                                 <div class="relative">
-                                    <input id="Email" type="text" placeholder="Enter Email"  class="ps-10 login-form-input bg-white focus:border" />
+                                    <input id="Email" name="email" type="text" placeholder="Enter Email"  class="ps-10 login-form-input bg-white focus:border" />
                                     <span class="absolute start-4 top-1/2 -translate-y-1/2">
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="text-white-dark">
                                             <path
@@ -39,11 +43,14 @@
                                         </svg>
                                     </span>
                                 </div>
+                                @error('email')
+                                    <div style="color: red">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div>
                                 <label for="Password">Password</label>
                                 <div class="relative text-white-dark">
-                                    <input id="Password" type="password" placeholder="Enter Password" class="login-form-input ps-10 placeholder:text-white-dark focus:border" />
+                                    <input id="Password" name="password" type="password" placeholder="Enter Password" class="login-form-input ps-10 placeholder:text-white-dark focus:border" />
                                     <span class="absolute start-4 top-1/2 -translate-y-1/2">
                                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
                                             <path
@@ -70,6 +77,9 @@
                                         </svg>
                                     </span>
                                 </div>
+                                @error('password')
+                                    <div style="color: red">{{ $message }}</div>
+                                @enderror
                             </div>
                             <button type="submit" class="btn btn-gradient !mt-6 w-full border-0 uppercase shadow hover:submit-btn focus:submit-btn active:submit-btn">
                                 Sign in

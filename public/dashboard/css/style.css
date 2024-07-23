@@ -623,3 +623,11 @@
 .dropdown ul li>button {
     width: 100%
 }
+
+.swal2-confirm{
+    background-color: #2B337D !important;
+}
+
+.swal2-title{
+    color: #2B337D !important;
+}

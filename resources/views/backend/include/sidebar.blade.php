@@ -21,7 +21,7 @@
         <ul class="perfect-scrollbar relative h-[calc(100vh-80px)] space-y-0.5 overflow-y-auto overflow-x-hidden p-4 py-0 font-semibold"
             x-data="{ activeDropdown: 'dashboard' }">
             <li class="nav-item">
-                <a href="{{ route('index') }}" class="group sidebargroup">
+                <a target="_blank" href="{{ route('index') }}" class="group sidebargroup">
                     <div class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-world" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -31,8 +31,7 @@
                             <path d="M11.5 3a17 17 0 0 0 0 18"></path>
                             <path d="M12.5 3a17 17 0 0 1 0 18"></path>
                          </svg>
-                        <span
-                            class="text-black pl-3 dark:text-[#506690] dark:group-hover:text-white-dark">Visit Website</span>
+                        <span class="text-black pl-3 dark:text-[#506690] dark:group-hover:text-white-dark">Visit Website</span>
                     </div>
                 </a>
             </li>
@@ -58,7 +57,7 @@
                 </button>
                 <ul x-cloak x-show="activeDropdown === 'setting'" x-collapse class="sub-menu text-gray-500">
                     <li>
-                        <a href="">Users</a>
+                        <a href="{{ route('users') }}">Users</a>
                     </li>
                     <li>
                         <a href="">System Information</a>
