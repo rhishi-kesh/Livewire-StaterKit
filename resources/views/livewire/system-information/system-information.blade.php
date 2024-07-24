@@ -35,7 +35,7 @@
                 @endif
                 @if ($logo)
                     <div>
-                        <img width="80" class="mt-1" src="{{ $logo->temporaryUrl() }}" alt="">
+                        <img width="100" class="mt-1" src="{{ $logo->temporaryUrl() }}" alt="">
                     </div>
                 @else
                     <div>
@@ -54,7 +54,7 @@
                 @endif
                 @if ($favicon)
                     <div>
-                        <img width="80" class="mt-1" src="{{ $favicon->temporaryUrl() }}" alt="">
+                        <img width="40" class="mt-1" src="{{ $favicon->temporaryUrl() }}" alt="">
                     </div>
                 @else
                     <div>
